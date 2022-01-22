@@ -27,8 +27,6 @@ const routesPath = './src/routes';
 const routesDir = fs.readdirSync(routesPath);
 routesDir.map(route => require(routesPath + '/' + route)(app));
 
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`Server started on localhost:${port}`);
 });
