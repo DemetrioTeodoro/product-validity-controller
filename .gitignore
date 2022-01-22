@@ -1,0 +1,12 @@
+/node_modules
+/src/transform
+/src/json
+
+.env
+.env.dev
+.env.test
+
+.bak
+.DS_Store
+
+package-lock.json

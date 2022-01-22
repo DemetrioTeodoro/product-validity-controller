@@ -1,0 +1,72 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    background: #ccdbf0;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgLogin {
+    align-items: center;
+    justify-content: center;
+}
+
+.containerForm {
+    width: 30%;
+    justify-content: center;
+}
+
+form {
+    height: 28%;
+    padding: 8%;
+    text-align: center;
+    border-radius: 10px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background: lightsteelblue;
+}
+
+form > label {
+    font-weight: bold;
+}
+
+form > small > a {
+    text-decoration: none;
+}
+
+.form-group {
+    margin: 5%;
+}
+
+.btn {
+    width: 80%;
+    margin: 3% 7%;
+}
+
+@media (max-width: 900px) {
+    .containerForm {
+        width: 40%;
+    }
+}
+
+@media (max-width: 700px) {
+    .containerForm {
+        width: 45%;
+    }
+}
+
+@media (max-width: 500px) {
+    .containerForm {
+        width: 55%;
+    }
+}
+
+@media (max-width: 400px) {
+    .containerForm {
+        width: 65%;
+    }
+}
