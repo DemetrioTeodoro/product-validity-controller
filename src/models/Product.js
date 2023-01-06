@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
-const User = mongoose.Schema({
+const Product = mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    manufacturing_date: {
-        type: Date,
+    amount: {
+        type: Number,
         required: true
     },
-    expiration_date: {
+    expirationDate: {
         type: Date,
         required: true
     }
@@ -18,4 +18,4 @@ const User = mongoose.Schema({
     versionKey: false
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Product', Product);

@@ -1,0 +1,19 @@
+<h1>Cadastre um novo usuário</h1>
+<form method="post" action="/saveUser">
+    <div class="form-group">
+        <div class="col-md-4 mb-3">
+            <label for="username">Nome</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Nome" required />
+            <div class="valid-feedback">
+                Tudo certo!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="password">Senha</label>
+            <input type="text" class="form-control" id="password" name="password" placeholder="Senha" required />
+            <div class="valid-feedback">
+                Tudo certo!
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+</form>

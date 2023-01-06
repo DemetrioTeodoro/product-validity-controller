@@ -1,0 +1,8 @@
+.btn-register {
+    float: right;
+}
+
+.center-items {
+    display: flex;
+    justify-content: center;
+}

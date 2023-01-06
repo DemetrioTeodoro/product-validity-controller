@@ -5,6 +5,11 @@ const userController = require('../controllers/UserController');
 
 router.get('', userController.sendLogin);
 
-router.post('/user', userController.saveUser);
+router.post('/verifyUser', userController.verifyUser);
+
+router.post('/saveUser', userController.saveOrUpdateUser);
+
+router.get('/registerNewUser', userController.sendSaveNewUser);
+
 
 module.exports = app => app.use('/', router);

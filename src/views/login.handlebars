@@ -1,5 +1,6 @@
+{{!-- Login Form --}}
 <div class="containerForm">
-<form name="formLogin" method="post" action="/user" onsubmit="return validate()">
+<form name="formLogin" method="post" action="/verifyUser" onsubmit="return validate()">
     <label>Logue agora</label>
     <div class="form-group">
         <input type="text" name="username" class="form-control" placeholder="usuário" />
@@ -10,3 +11,6 @@
     <button type="submit" class="btn btn-primary">Entrar</button>
 </form>
 </div>
+
+{{!-- scripts --}}
+<script type="text/javascript" src="../../js/login.js"></script>
