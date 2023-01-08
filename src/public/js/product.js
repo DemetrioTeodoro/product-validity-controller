@@ -12,8 +12,13 @@ const getRowValue = ({ tr, index }) => {
     return tr.cells[index].textContent;
 }
 
+const deleteRowByIndex = index => {
+    document.querySelector('.table').deleteRow(index);
+}
+
 const getProductToDelete = event => {
     const tr = event.target.closest('tr');
+    document.getElementById('index').value = tr.rowIndex;
     document.getElementById('id-delete').value = getRowValue({ tr,  index: 0 });
     document.getElementById('product-name-delete').value = getRowValue({ tr,  index: 1 });
     document.getElementById('product-amount-delete').value = getRowValue({ tr,  index: 2 });
@@ -22,9 +27,10 @@ const getProductToDelete = event => {
 
 const deleteProduct = async () => {
     const id = document.getElementById('id-delete').value;
+    const index = document.getElementById('index').value;
     const modalBackdropFadeShow = document.querySelector('.modal-backdrop.fade.show');
 
-    console.info(`Product id to delete: ${id}`);
+    console.info(`ProductId to delete: ${id}`);
     const response = await request({ method: CONSTANTS.METHODS.DELETE, path: '/product', id });
     if (response.status !== CONSTANTS.RESPONSE.STATUS.OK) {
         modalBackdropFadeShow.parentNode.removeChild(modalBackdropFadeShow);
@@ -35,9 +41,10 @@ const deleteProduct = async () => {
 
     modalBackdropFadeShow.parentNode.removeChild(modalBackdropFadeShow);
     modalConfirmDelete.classList.remove('show');
+    deleteRowByIndex(index);
 
     swal(CONSTANTS.MESSAGE.SUCCESS_TITLE, CONSTANTS.MESSAGE.SUCCESSFULLY_DELETED_PRODUCT, 'success');
-    console.info(`Product id deleted: ${id}`);
+    console.info(`Product deleted: ${id}`);
 }
 
 const buildOrCleanProduct = (id = '', productName = '', productAmount = '', productValidity = '') => {
@@ -53,11 +60,12 @@ const getDataToEdit = async event => {
     document.getElementById('title').innerHTML = 'Editar Produto';
 
     const id = getRowValue({ tr, index: 0 });
+    console.info(`ProductId to get: ${id}`);
     
     const product = await request({ method: CONSTANTS.METHODS.GET, path: '/product/findById', id, json: true });
-    console.log('product', product);
-
+    
     buildOrCleanProduct(id, product.name, product.amount, product.expirationDate);
+    console.info(`Product founded`);
 }
 
 const setTitleNewProtuct = () => {
