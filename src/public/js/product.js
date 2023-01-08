@@ -63,9 +63,9 @@ const getDataToEdit = async event => {
     console.info(`ProductId to get: ${id}`);
     
     const product = await request({ method: CONSTANTS.METHODS.GET, path: '/product/findById', id, json: true });
+    console.info(`Product ${product.name} founded`);
     
     buildOrCleanProduct(id, product.name, product.amount, product.expirationDate);
-    console.info(`Product founded`);
 }
 
 const setTitleNewProtuct = () => {

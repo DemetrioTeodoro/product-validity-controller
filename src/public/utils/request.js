@@ -43,7 +43,7 @@ export const request = async ({ method = CONSTANTS.METHODS.GET, path, body, id, 
             const erro = await response.json();
             errorOnRequest(response.status, erro.msg);
         }
-        if (json && response.status === RESPONSE.STATUS.OK) {
+        if (json && response.status === CONSTANTS.RESPONSE.STATUS.OK) {
             const responseJson = await response.json();
             return responseJson;
         }
