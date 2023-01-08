@@ -6,6 +6,7 @@ const cancelAndCloseModalBtn = document.getElementById('cancel-and-close-modal-b
 const editProductBtn = document.querySelectorAll('.table #edit-product-btn');
 const toDeleteProductBtn = document.querySelectorAll('.table #to-delete-product-btn');
 const deleteProductBtn = document.getElementById('delete-product-btn');
+const modalConfirmDelete = document.getElementById('modal-confirm-delete');
 
 const getRowValue = ({ tr, index }) => {
     return tr.cells[index].textContent;
@@ -21,11 +22,20 @@ const getProductToDelete = event => {
 
 const deleteProduct = async () => {
     const id = document.getElementById('id-delete').value;
+    const modalBackdropFadeShow = document.querySelector('.modal-backdrop.fade.show');
+
     console.info(`Product id to delete: ${id}`);
     const response = await request({ method: CONSTANTS.METHODS.DELETE, path: '/product', id });
     if (response.status !== CONSTANTS.RESPONSE.STATUS.OK) {
+        modalBackdropFadeShow.parentNode.removeChild(modalBackdropFadeShow);
+        modalConfirmDelete.classList.remove('show');
         swal(CONSTANTS.MESSAGE.ERROR_TITLE, CONSTANTS.MESSAGE.ERROR, 'error');
+        return;
     }
+
+    modalBackdropFadeShow.parentNode.removeChild(modalBackdropFadeShow);
+    modalConfirmDelete.classList.remove('show');
+
     swal(CONSTANTS.MESSAGE.SUCCESS_TITLE, CONSTANTS.MESSAGE.SUCCESSFULLY_DELETED_PRODUCT, 'success');
     console.info(`Product id deleted: ${id}`);
 }
